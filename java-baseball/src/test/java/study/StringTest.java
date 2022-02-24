@@ -2,11 +2,8 @@ package study;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.util.Arrays;
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class StringTest {
     @Test
@@ -15,10 +12,15 @@ public class StringTest {
         assertThat(str.split(",")).contains("b");
         // 원소 정확히 일치
         assertThat(str.split(",")).containsExactly("a","b");
+        assertThat(str.split(","))
+                .contains("b")
+                .containsExactly("a","b");
 
         String number = "1";
         assertThat(number.split(",")).contains(number);
         assertThat(number.split(",")).containsExactly(number);
+        assertThat(str.split(","));
+
 
     }
 
