@@ -31,12 +31,24 @@ public class setTest {
         assertThat(numbers.size()).isEqualTo(size);
     }
 
-    @Test
     @DisplayName("ParameterizedTest use value")
     @ParameterizedTest
     @ValueSource(ints = {1,2,3})
     void contains(int input) {
         assertThat(numbers.contains(input)).isTrue();
+    }
+
+    @Test
+    @DisplayName("ParameterizedTest")
+    @ParameterizedTest
+    @ValueSource(ints = {4,5})
+    void returnValueBoolean(int input) {
+        if(numbers.contains(input)) {
+            assertThat(numbers.contains(input)).isTrue();
+        } else {
+            assertThat(numbers.contains(input)).isFalse();
+        }
+
     }
 
     @ParameterizedTest
@@ -45,5 +57,5 @@ public class setTest {
         String actualValue = input.toLowerCase();
         assertEquals(expected, actualValue);
     }
-
 }
+
