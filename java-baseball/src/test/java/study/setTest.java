@@ -1,12 +1,15 @@
 package study;
 
 
+import org.assertj.core.util.Strings;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.*;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.*;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class setTest {
 
@@ -35,4 +38,12 @@ public class setTest {
     void contains(int input) {
         assertThat(numbers.contains(input)).isTrue();
     }
+
+    @ParameterizedTest
+    @CsvSource(value = {"test:test", "tEst:test", "Java:java"}, delimiter = ':')
+    void toLowerCase_ShouldGenerateTheExpectedLowercaseValue(String input, String expected) {
+        String actualValue = input.toLowerCase();
+        assertEquals(expected, actualValue);
+    }
+
 }
